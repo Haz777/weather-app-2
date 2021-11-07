@@ -29,22 +29,25 @@ return (
       value={city}
       onKeyPress={getWeather}
       />
-      
+     
       {typeof weatherData.main === 'undefined' ? (
         <div>
-          <p>Welcome to weather app! Please enter a city name.</p>
+          <p className='Header'>Welcome to weather app! Please enter a city name.</p>
         </div>
         ) : (
           <div classname='weather-data'>
             <p className='city'>{weatherData.name}</p>
-            <p className='weather'>{weatherData.weather[0].main} </p>
-            <p className='temp'>{Math.round(weatherData.main.temp)}°C</p>
-            <p className='temp-min'>Lowest: {weatherData.main.temp_min}°C</p>
-            <p className='temp-max'>Highest: {weatherData.main.temp_max}°C</p>
+            <p className='weather'>Status: {weatherData.weather[0].main} </p>
+            <p className='temp'>Temperature: {Math.round(weatherData.main.temp)}°C</p>
+            <ul class="a">
+            <li><p className='temp-min'>Lowest: {weatherData.main.temp_min}°C</p> </li>
+            <li><p className='temp-max'>Highest: {weatherData.main.temp_max}°C</p> </li>
+            </ul>
             <p className='humidity'>Humidity: {Math.round(weatherData.main.humidity)}%</p>
           </div>
         )
       }
+      
 
       {weatherData.cod === '404'? (
         <p>City not found. Please enter valid city.</p>
